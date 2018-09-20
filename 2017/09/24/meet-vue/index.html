@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言Vue.js (读音 /vjuː/，类似于 view) 是一套构建用户界面的渐进式框架 ，是由华人尤雨溪独立开发的一个前端框架，也是现在前端圈最火的前端框架之一，与之并列的有Google的Angular，Facebook的React，Vue 的核心库只关注视图层，它不仅易于上手，还便于与第三方库或既有项目整合，vue提供的脚手架令你可以快速的搭建一个简单的vue单页面应用（SPA :singl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue初探">
+<meta property="og:url" content="http://yoursite.com/2017/09/24/meet-vue/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言Vue.js (读音 /vjuː/，类似于 view) 是一套构建用户界面的渐进式框架 ，是由华人尤雨溪独立开发的一个前端框架，也是现在前端圈最火的前端框架之一，与之并列的有Google的Angular，Facebook的React，Vue 的核心库只关注视图层，它不仅易于上手，还便于与第三方库或既有项目整合，vue提供的脚手架令你可以快速的搭建一个简单的vue单页面应用（SPA :singl">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2017-10-12T15:34:59.249Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue初探">
+<meta name="twitter:description" content="前言Vue.js (读音 /vjuː/，类似于 view) 是一套构建用户界面的渐进式框架 ，是由华人尤雨溪独立开发的一个前端框架，也是现在前端圈最火的前端框架之一，与之并列的有Google的Angular，Facebook的React，Vue 的核心库只关注视图层，它不仅易于上手，还便于与第三方库或既有项目整合，vue提供的脚手架令你可以快速的搭建一个简单的vue单页面应用（SPA :singl">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/09/24/meet-vue/"/>
+
+
+
+
+
+  <title>Vue初探 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/24/meet-vue/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Vue初探</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-24T16:13:11+08:00">
+                2017-09-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><a href="https://github.com/vuejs/vue" target="_blank" rel="noopener">Vue.js</a> (读音 /vjuː/，类似于 <strong>view</strong>) 是一套构建用户界面的<strong>渐进式框架</strong> ，是由华人尤雨溪独立开发的一个前端框架，也是现在前端圈最火的前端框架之一，与之并列的有Google的<a href="https://github.com/angular/angular" target="_blank" rel="noopener">Angular</a>，Facebook的<a href="https://github.com/facebook/react" target="_blank" rel="noopener">React</a>，Vue 的核心库只关注视图层，它不仅易于上手，还便于与第三方库或既有项目整合，vue提供的脚手架令你可以快速的搭建一个简单的vue单页面应用（SPA :single page web application）<a id="more"></a></p>
+<h3 id="源起"><a href="#源起" class="headerlink" title="源起"></a>源起</h3><p>在讲vue之前，我们先看一下前端的前世今生，那样会更好的理解和认知vue给我们带来了什么以及为什么要使用vue</p>
+<h4 id="前端模块化"><a href="#前端模块化" class="headerlink" title="前端模块化"></a>前端模块化</h4><p>以前的前端代码，基本都是刀耕火种年代的jQuery或原生js手写，如下面</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="number">10</span>; i++)&#123;</span><br><span class="line">     <span class="comment">//........</span></span><br><span class="line">&#125;</span><br><span class="line">element.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="comment">//.......</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>很明显，这样若是业务逻辑越来越多，逻辑封装成函数之后，命名越来越多，在避免命名冲突问题上就消耗很多时间，外部文件引入层叠严重，JS文件引入层层依赖</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"a.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"b.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"c.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"d.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>上述的js文件引入就是噩梦一般，b.js依赖a.js，c.js依赖b.js,b.js依赖a.js，书写顺序不能乱，多人协同开发很难协调，后来人们开始使用匿名自执行函数或者类似于java风格的命名空间，但是还是换汤不换药，由此，js模块化规范正式进入人们的视野，一大波前端模块化规范涌现出来，如<strong>CommonJs</strong> ，<strong>AMD/RequireJs</strong> ， <strong>CMD/seajs</strong> 等等直到现在的<strong>ES6模块标准</strong> ，而前端也因此终于开始走上台前</p>
+<p>参考资料：</p>
+<p><a href="http://web.jobbole.com/83761/" target="_blank" rel="noopener">JavaScript 模块化历程</a></p>
+<p><a href="http://imweb.io/topic/55994b358555272639cb031b" target="_blank" rel="noopener">浅谈前端模块化</a></p>
+<p><a href="http://fex.baidu.com/blog/2014/03/fis-module/" target="_blank" rel="noopener">前端工程之模块化</a></p>
+<p><a href="http://huangxuan.me/js-module-7day/#/" target="_blank" rel="noopener">模块化七日谈</a></p>
+<p>说完前端js再来说下前端三驾马车之一的css（马上就要谈到vue了，不急哈），前端样式一直是个老大难的问题，甚至还诞生了专门的css工程师，由此可见，css并不像人们看起来的那么简单，当项目结构变大，页面重构的时候，频繁的修改css样式，更改css样式结构；浏览器兼容css样式书写；css的低复用性等等这些种种弊端都会让你在每一个书写css的深夜，都有种想要拿刀砍人的冲动，于是我们有了新朋友：css预处理器，例如sass，lesss，tylus以及处理浏览器兼容样式的postcss</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// Mixin example</span><br><span class="line"><span class="selector-class">.btn-standout</span> &#123;</span><br><span class="line">    @extend .btn;</span><br><span class="line">    @<span class="keyword">extend</span> .btn-block;</span><br><span class="line"></span><br><span class="line">    @<span class="keyword">media</span> (max-width: $screen-xs-max) &#123;</span><br><span class="line">        @<span class="keyword">include</span> button-size(</span><br><span class="line">            $padding-large-vertical,</span><br><span class="line">            $padding-large-horizontal,</span><br><span class="line">            $font-size-large,</span><br><span class="line">            $line-height-large,</span><br><span class="line">            $border-radius-large</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &amp;<span class="selector-class">.sell</span> &#123;</span><br><span class="line">        @extend .btn-primary;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>虽然学习成本有点高，但是有了这些css预处理，我们可以得到：</p>
+<ol>
+<li>函数，变量以及Mixin，复用css</li>
+<li>css模块化，改善项目结构</li>
+<li>预编译，缓解多浏览器兼容造成的冗余</li>
+<li>···</li>
+</ol>
+<p>可以看到,有了css预处理器之后，可以让我们从繁杂冗余的css样式中摆脱出来，css代码结构也会更加的直观和清晰，开发时间和成本会减少到最低</p>
+<h4 id="前端构建"><a href="#前端构建" class="headerlink" title="前端构建"></a>前端构建</h4><p>代码优化告一段落，但是这才只是刚刚开始，我们如果想要找出代码错误，想要压缩代码，想要自动检测代码修改，并且自动帮我们完成压缩检查的任务呢，接着我们有了强劲的新朋友：前端构建工具，诸如Gulp ,Grunt等，通过他们社区的插件。你可以轻易的做到上述所有</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">grunt</span>) </span>&#123;</span><br><span class="line">grunt.initConfig(&#123;</span><br><span class="line">    uglify: &#123;</span><br><span class="line">        <span class="string">'dist/all.min.js'</span>: [<span class="string">'dist/all.js'</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    jshint: &#123;</span><br><span class="line">        files: [<span class="string">'gruntfile.js'</span>, <span class="string">'src/*.js'</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    watch: &#123;</span><br><span class="line">        files: [<span class="string">'gruntfile.js'</span>, <span class="string">'src/*.js'</span>],</span><br><span class="line">        tasks: [<span class="string">'jshint'</span>, <span class="string">'concat'</span>, <span class="string">'uglify'</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">grunt.loadNpmTasks(<span class="string">'grunt-contrib-jshint'</span>);</span><br><span class="line">grunt.loadNpmTasks(<span class="string">'grunt-contrib-uglify'</span>);</span><br><span class="line">grunt.loadNpmTasks(<span class="string">'grunt-contrib-watch'</span>);</span><br><span class="line">grunt.registerTask(<span class="string">'default'</span>, [<span class="string">'jshint'</span>, <span class="string">'concat'</span>, <span class="string">'uglify'</span>]);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>上述的Gruntfile.js引入了uglify，jshint,watch插件，我们也因此可以做到压缩，代码检查，自动检测代码更改这三个效果，由此可见，前端构建工具极大地解放了人们的生产力（你也终于可以不用一行一行的去找你哪里代码写错了）</p>
+<p>终于，你代码也写好了，代码也压缩了，现在需要部署打包了，你看了下，一百来个js，一百来个css，外加一千多张图片，每一个文件都会是一次请求，我估计等你家的网站资源加载完毕，你都已经出门买包烟回来了，这个时候，我们来个超级强劲的新朋友：前端打包工具，诸如webpack，yarn，rollup 等，超强劲的新朋友可以帮我们做到：</p>
+<ol>
+<li>以模块化的方式来书写脚本，方便旧项目进行代码迁移</li>
+<li>开发便捷，能替代部分 grunt/gulp 的工作，比如压缩混淆、图片转base64等</li>
+<li>扩展性强，插件机制完善，特别是支持 热加载的功能</li>
+<li>···</li>
+</ol>
+<p>可以看到，利用前端打包工具bundle我们的项目，可以缩小文件体积，将多个文件合并成一个文件，减少http请求，对于我们的项目优化有着显著的作用</p>
+<h5 id="so-why-vue"><a href="#so-why-vue" class="headerlink" title="so, why vue?"></a>so, why vue?</h5><p>其实我们用npm init一个项目，利用前端构建工具，npm install 相关的包，利用jQuery其实也是可以开发项目的，但是为什么要用vue，不同的框架会有不同的效果，利用jQuery我们可以更好的进行dom操作，而现在世界上60%的公司也都是在用jQuery，而利用vue可以帮我们做到的：</p>
+<ol>
+<li>项目越来越大，前端工程化越来越明显，项目需要细分到细粒度的模块，vue’的组件系统，可以将一个大型的界面切分成一个一个更小的可控单元</li>
+<li>可变的命令式操作，vue让DOM的更新操作是自动的，状态变化的时候DOM可以自动更新到正确的状态</li>
+<li>做单页应用，需要有一个URL对应到一个应用的状态，vue路由vue-router可以提供路由解决方案</li>
+<li>规模的状态管理，当应用变得很大，多人协作就会涉及多个组件之间的共享、多个组件需要去改动同一份状态，vue状态管理库vuex可以帮助这样大规模应用进行状态管理，让其依然能够高效运行</li>
+<li>vue脚手架提供的完整的项目结构，内置了webpack配置，你也可以根据自定义的从npm安装相应的依赖，诸如axios，sass，postcss等</li>
+</ol>
+<p>技术选型并不容易，选择适合项目的框架可以事半功倍，时代发展越来越来，业务需求越来越复杂，前端的需求也急速提高，利用前端框架诸如vue，react提供的一套完善的全家桶配合前端构建工具可以使我们变得更简单</p>
+<h3 id="vue实践"><a href="#vue实践" class="headerlink" title="vue实践"></a>vue实践</h3><p>以前在公司都是用的jQuery，自己学习vue也只是通过业余自学，包括前端构建工具，css预处理器等等，所以做的项目不是很多，也算不上什么经验，来了胜因很幸运，刚到就是一个前端vue实现的单页面放在眼前，要求用jQuery实现，期间只是纯粹的剥离数据和样式，没有对vue进行深入的学习，但是熟悉了vue项目的一些基本结构</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── config.js                   # 项目配置文件</span><br><span class="line">├── build/                      # webpack 配置文件</span><br><span class="line">│   └── ...</span><br><span class="line">├── src/</span><br><span class="line">│   ├── main.js                 # app 入口文件</span><br><span class="line">│   ├── App.vue                 # app 主组件</span><br><span class="line">│   ├── components/             # ui 组件</span><br><span class="line">│   │   └── ...</span><br><span class="line">│   └── assets/                 # 模块静态资源，会被 webpack 打包</span><br><span class="line">│       └── ...</span><br><span class="line">├── static/                     # 纯静态资源，打包是直接被复制</span><br><span class="line">├── test/</span><br><span class="line">│   └── unit/                   # 单元测试</span><br><span class="line">│   │   ├── specs/              # test spec files</span><br><span class="line">│   │   ├── index.js            # 测试入口文件</span><br><span class="line">│   │   └── karma.conf.js       # 测试配置文件</span><br><span class="line">│   └── e2e/                    # 端到端测试</span><br><span class="line">│   │   ├── specs/              # test spec files</span><br><span class="line">│   │   ├── custom-assertions/  # 端到端的自定义断言</span><br><span class="line">│   │   ├── runner.js           # 测试脚本</span><br><span class="line">│   │   └── nightwatch.conf.js  # 测试配置文件</span><br><span class="line">├── .babelrc                    # babel 配置</span><br><span class="line">├── .eslintrc.js                # eslint 配置</span><br><span class="line">├── index.html                  # index.html 模版</span><br><span class="line">└── package.json                # 命令和依赖列表</span><br></pre></td></tr></table></figure>
+<p>然后开始进行早晚班后台开发，第一次接触这么中型的vue单页面项目，从一开始的不知道如何下手到后来的慢慢熟悉和上手，期间对于vue学习收获了很多，也了解了配合vue一起使用的element-ui组件库，提供了很多诸如table，input，notification等组件</p>
+<h4 id="vue用法"><a href="#vue用法" class="headerlink" title="vue用法"></a>vue用法</h4><p>你可以在页面上直接<code>&lt;script&gt;</code>引入vue文件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"https://unpkg.com/vue"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>你也可以直接用vue命令行工具（前提是你熟悉node）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># 安装npm</span><br><span class="line">install npm</span><br><span class="line"># 选择淘宝cnpm镜像</span><br><span class="line">$ npm install -g cnpm --registry=https:<span class="comment">//registry.npm.taobao.org</span></span><br><span class="line"># 全局安装 vue-cli </span><br><span class="line">$ npm install --global vue-cli</span><br><span class="line"># 选择webpack模板</span><br><span class="line">$ vue init webpack my-project</span><br><span class="line"># 安装依赖</span><br><span class="line">$ cd my-project</span><br><span class="line">$ npm install</span><br><span class="line"># 运行</span><br><span class="line">$ npm run dev</span><br><span class="line"># 打包部署</span><br><span class="line">$ npm run build</span><br></pre></td></tr></table></figure>
+<p>vue主要语法包括：</p>
+<ol>
+<li>声明式渲染：双括号进行动态绑定</li>
+<li>指令：v-bind,v-for,v-if等，当表达式的值改变时，将其产生的连带影响，响应式地作用于 DOM</li>
+<li>组件：组件可以扩展 HTML 元素，封装可重用的代码</li>
+<li>vue生命周期：从开始创建、初始化数据、编译模板、挂载Dom→渲染、更新→渲染、卸载等一系列过程</li>
+</ol>
+<p><strong>Vue 实例</strong> </p>
+<p>在文档中经常会使用 vm 这个变量名表示 Vue 实例，在实例化 Vue 时，需要传入一个选项对象，它可以包含数据(data)、模板(template)、挂载元素(el)、方法(methods)、生命周期钩子(lifecyclehook)等选项</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  data: &#123; <span class="attr">a</span>: <span class="number">1</span> &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    A: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  computed: &#123;</span><br><span class="line">    B: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h5 id="vue生命周期"><a href="#vue生命周期" class="headerlink" title="vue生命周期"></a>vue生命周期</h5><p>对于vue生命周期的了解，是你开发vue项目的必经之路，你必须很清晰的知道每一个流程，你的每一个操作，dom会发生什么变化</p>
+<p>beforecreate : 可以在这加个loading事件，在加载实例时触发<br>created : 初始化完成时的事件写在这里，异步请求也适宜在这里调用<br>mounted : 挂载元素，获取到DOM节点<br>updated : 如果对数据统一处理，在这里写上相应函数<br>beforeDestroy : 可以做一个确认停止事件的确认框<br>nextTick : 更新数据后立即操作dom</p>
+<p>更多内容参考=》vue官方文档: <a href="https://cn.vuejs.org" target="_blank" rel="noopener">https://cn.vuejs.org</a></p>
+<h4 id="vue-router"><a href="#vue-router" class="headerlink" title="vue-router"></a>vue-router</h4><p>vue-router是vue的官方路由，若是你想开发一个单页面vue应用，那么这将会是你最好的选择，上手也极其简单</p>
+<p>你可以直接在页面里面引入（vue作为大哥肯定是不能少的）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"/path/to/vue.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script src=<span class="string">"/path/to/vue-router.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>你也可以在npm安装vue-router到项目依赖</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 安装 vue-router</span><br><span class="line">npm install vue-router</span><br><span class="line"># 导入vue,vue-router</span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> VueRouter <span class="keyword">from</span> <span class="string">'vue-router'</span></span><br><span class="line"># 显示的使用vue-router</span><br><span class="line">Vue.use(VueRouter)</span><br></pre></td></tr></table></figure>
+<p>来一个example看下基本的用法：</p>
+<p>html部分</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://unpkg.com/vue/dist/vue.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://unpkg.com/vue-router/dist/vue-router.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello App!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 使用 router-link 组件来导航. --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 通过传入 `to` 属性指定链接. --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- &lt;router-link&gt; 默认会被渲染成一个 `&lt;a&gt;` 标签 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/foo"</span>&gt;</span>Go to Foo<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/bar"</span>&gt;</span>Go to Bar<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 路由出口 --&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 路由匹配到的组件将渲染在这里 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">router-view</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>js部分</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 0. 如果使用模块化机制编程，導入Vue和VueRouter，要调用 Vue.use(VueRouter)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1. 定义（路由）组件。</span></span><br><span class="line"><span class="comment">// 可以从其他文件 import 进来</span></span><br><span class="line"><span class="keyword">const</span> Foo = &#123; <span class="attr">template</span>: <span class="string">'&lt;div&gt;foo&lt;/div&gt;'</span> &#125;</span><br><span class="line"><span class="keyword">const</span> Bar = &#123; <span class="attr">template</span>: <span class="string">'&lt;div&gt;bar&lt;/div&gt;'</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 定义路由</span></span><br><span class="line"><span class="comment">// 每个路由应该映射一个组件。 其中"component" 可以是</span></span><br><span class="line"><span class="comment">// 通过 Vue.extend() 创建的组件构造器，</span></span><br><span class="line"><span class="comment">// 或者，只是一个组件配置对象。</span></span><br><span class="line"><span class="comment">// 我们晚点再讨论嵌套路由。</span></span><br><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">  &#123; <span class="attr">path</span>: <span class="string">'/foo'</span>, <span class="attr">component</span>: Foo &#125;,</span><br><span class="line">  &#123; <span class="attr">path</span>: <span class="string">'/bar'</span>, <span class="attr">component</span>: Bar &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 创建 router 实例，然后传 `routes` 配置</span></span><br><span class="line"><span class="comment">// 你还可以传别的配置参数, 不过先这么简单着吧。</span></span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  routes <span class="comment">// （缩写）相当于 routes: routes</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 4. 创建和挂载根实例。</span></span><br><span class="line"><span class="comment">// 记得要通过 router 配置参数注入路由，</span></span><br><span class="line"><span class="comment">// 从而让整个应用都有路由功能</span></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  router</span><br><span class="line">&#125;).$mount(<span class="string">'#app'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 现在，应用已经启动了！</span></span><br></pre></td></tr></table></figure>
+<p>套用的vue-router官方的例子，关于vue-router主要的部分无非是：</p>
+<ol>
+<li><p><code>&lt;router-link&gt;</code> :支持用户在具有路由功能的应用中（点击）导航。 通过 <code>to</code> 属性指定目标地址，默认渲染成带有正确链接的 <code>&lt;a&gt;</code> 标签，可以通过配置 <code>tag</code> 属性生成别的标签.。另外，当目标路由成功激活时，链接元素自动设置一个表示激活的 CSS 类名</p>
+</li>
+<li><p><code>&lt;router-view&gt;</code>:渲染路径匹配到的视图组件。<code>&lt;router-view&gt;</code> 渲染的组件还可以内嵌自己的 <code>&lt;router-view&gt;</code>，根据嵌套路径，渲染嵌套组件</p>
+</li>
+<li><p>路由信息对象:表示当前激活的路由的状态信息，包含了当前 URL 解析得到的信息，还有 URL 匹配到的 route records（路由记录）,属性包括：</p>
+<p>3.1 $route.path: 对应当前路由的路径，总是解析为绝对路径，</p>
+<p>3.2  $route.params: key/value 对象，包含了 动态片段 和 全匹配片段</p>
+<p>3.3 $route.query: key/value 对象，表示 URL 查询参数</p>
+<p>3.4 $route.hash: 当前路由的 hash 值 (带 <code>#</code>)</p>
+</li>
+<li><p>Router 构造配置: 属性有routes，mode，base等</p>
+</li>
+</ol>
+<p>更多请查阅=》vue-router官方文档: <a href="https://router.vuejs.org/zh-cn/" target="_blank" rel="noopener">https://router.vuejs.org/zh-cn/</a></p>
+<h4 id="vuex"><a href="#vuex" class="headerlink" title="vuex"></a>vuex</h4><p>Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化，借鉴了flux，redux等架构思想，对大中型vue项目各个组件间的状态进行管理</p>
+<p>你可以直接在页面引入（仍然要先引入vue）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"/path/to/vue.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script src=<span class="string">"/path/to/vuex.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>仍然，你也可以选择方便的安装依赖到package.json</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 安装依赖到项目中</span><br><span class="line">npm install vuex --save</span><br><span class="line"># 页面引入</span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line"># 显示使用vuex</span><br><span class="line">Vue.use(Vuex)</span><br></pre></td></tr></table></figure>
+<p>vuex代码一撇</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  state: &#123;</span><br><span class="line">    count: <span class="number">1</span></span><br><span class="line">  &#125;,</span><br><span class="line">  mutations: &#123;</span><br><span class="line">    increment (state) &#123;</span><br><span class="line">      <span class="comment">// 变更状态</span></span><br><span class="line">      state.count++</span><br><span class="line">    &#125;</span><br><span class="line">   &#125;,</span><br><span class="line">  actions: &#123;</span><br><span class="line">    increment (context) &#123;</span><br><span class="line">      context.commit(<span class="string">'increment'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>vuex主要包括：</p>
+<ol>
+<li><p>store：每一个 Vuex 应用的核心就是 store（仓库）,创建一个 store</p>
+<p><code>store = new Vuex.Store({})</code></p>
+</li>
+<li><p>state：state就是Store中包含应用中的状态,获取状态<code>store.state.count</code></p>
+</li>
+<li><p>mutations：更改 Vuex 的 store 中的状态的唯一方法是提交 mutation,类似于事件，<code>store.commit(&quot;increment&quot;)</code></p>
+</li>
+<li><p>actions: action 提交的是 mutation，而不是直接变更状态</p>
+</li>
+<li><p>modules: 可以将store切割成模块也就是module，可以帮助我们更好的分离各个组件间的状态</p>
+</li>
+</ol>
+<p>更多请查阅=》vuex官方文档: <a href="https://vuex.vuejs.org/zh-cn/installation.html" target="_blank" rel="noopener">https://vuex.vuejs.org/zh-cn/installation.html</a></p>
+<h4 id="element-ui"><a href="#element-ui" class="headerlink" title="element-ui"></a>element-ui</h4><p>element-ui是一套为开发者、设计师和产品经理准备的基于 Vue 2.0 的组件库，提供了配套设计资源，使用与vue2.0项目开发，提供了很多有用的组件</p>
+<p>页面直接引入</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 引入样式 --&gt;</span><br><span class="line">&lt;link rel=<span class="string">"stylesheet"</span> href=<span class="string">"https://unpkg.com/element-ui/lib/theme-default/index.css"</span>&gt;</span><br><span class="line">&lt;!-- 引入组件库 --&gt;</span><br><span class="line">&lt;script src=<span class="string">"https://unpkg.com/element-ui/lib/index.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>npm安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i element-ui -S</span><br></pre></td></tr></table></figure>
+<p>如果是通过npm 安装需要注意了，你需要在main.js中引入Element</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 引入</span></span><br><span class="line">import ElementUI from 'element-ui'</span><br><span class="line">import 'element-ui/lib/theme-default/index.css'</span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用</span></span><br><span class="line">Vue.use(ElementUI)</span><br></pre></td></tr></table></figure>
+<p>但是还没完，样式文件还没有引入，你需要单独的引入组件的样式文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> npm 安装 babel-plugin-component</span></span><br><span class="line">npm install babel-plugin-component -D</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改.babelrc</span></span><br><span class="line">&#123;</span><br><span class="line">  "presets": [</span><br><span class="line">    ["es2015", &#123; "modules": false &#125;]</span><br><span class="line">  ],</span><br><span class="line">  "plugins": [["component", [</span><br><span class="line">    &#123;</span><br><span class="line">      "libraryName": "element-ui",</span><br><span class="line">      "styleLibraryName": "theme-default"</span><br><span class="line">    &#125;</span><br><span class="line">  ]]]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后现在你可以根据官方文档选择你想要的组件进行开发了，若是想单独引入单个组件也是可以的</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 引入button select组件</span></span><br><span class="line">import &#123; Button, Select &#125; from 'element-ui'</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 别忘了显示使用</span></span><br><span class="line">Vue.use(Button)</span><br><span class="line">Vue.use(Select)</span><br></pre></td></tr></table></figure>
+<p>组件太多，API写的很详细</p>
+<p>随意的举个例子</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--&gt;</span></span><br><span class="line"><span class="comment">面包屑导航效果如下：</span></span><br><span class="line"><span class="comment">首页/活动管理/活动列表/活动详情</span></span><br><span class="line"><span class="comment">&lt;--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">el-breadcrumb</span> <span class="attr">separator</span>=<span class="string">"/"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">el-breadcrumb-item</span> <span class="attr">:to</span>=<span class="string">"&#123; path: '/' &#125;"</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">el-breadcrumb-item</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">el-breadcrumb-item</span>&gt;</span>活动管理<span class="tag">&lt;/<span class="name">el-breadcrumb-item</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">el-breadcrumb-item</span>&gt;</span>活动列表<span class="tag">&lt;/<span class="name">el-breadcrumb-item</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">el-breadcrumb-item</span>&gt;</span>活动详情<span class="tag">&lt;/<span class="name">el-breadcrumb-item</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">el-breadcrumb</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>更多请查阅=》element-ui官方文档：<a href="http://element.eleme.io/#/zh-CN" target="_blank" rel="noopener">http://element.eleme.io/#/zh-CN</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/28/obj-property-copy/" rel="next" title="ES6学习总结（五）">
+                <i class="fa fa-chevron-left"></i> ES6学习总结（五）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/11/learn-git/" rel="prev" title="Git命令行纪要">
+                Git命令行纪要 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#源起"><span class="nav-number">2.</span> <span class="nav-text">源起</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#前端模块化"><span class="nav-number">2.1.</span> <span class="nav-text">前端模块化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#前端构建"><span class="nav-number">2.2.</span> <span class="nav-text">前端构建</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#so-why-vue"><span class="nav-number">2.2.1.</span> <span class="nav-text">so, why vue?</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue实践"><span class="nav-number">3.</span> <span class="nav-text">vue实践</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#vue用法"><span class="nav-number">3.1.</span> <span class="nav-text">vue用法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#vue生命周期"><span class="nav-number">3.1.1.</span> <span class="nav-text">vue生命周期</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vue-router"><span class="nav-number">3.2.</span> <span class="nav-text">vue-router</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vuex"><span class="nav-number">3.3.</span> <span class="nav-text">vuex</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#element-ui"><span class="nav-number">3.4.</span> <span class="nav-text">element-ui</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

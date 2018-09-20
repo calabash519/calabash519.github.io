@@ -79,17 +79,21 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="每个前端的心里都少不了一个全栈的梦，最近在折腾node，所以少不了数据库的操作，由于以前对于数据库接触也比较少，所以开始学习MongoDB多少有点忐忑，不过开始了以后才发现，原来非关系型数据库大哥MongoDB也挺好学的啊，不过总是用MongoDB shell中总是觉得麻烦也不直观，所以想着找一个MongoDB的可视化工具用用，后来找到了RoboMongo，这名字听起来怪怪的，不过用起来才发现，真">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2018/09/20/hello-world/index.html">
+<meta property="og:title" content="MongoDB可视化工具之RoboMongo">
+<meta property="og:url" content="http://yoursite.com/2017/05/15/mongodb-and-robomango/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="每个前端的心里都少不了一个全栈的梦，最近在折腾node，所以少不了数据库的操作，由于以前对于数据库接触也比较少，所以开始学习MongoDB多少有点忐忑，不过开始了以后才发现，原来非关系型数据库大哥MongoDB也挺好学的啊，不过总是用MongoDB shell中总是觉得麻烦也不直观，所以想着找一个MongoDB的可视化工具用用，后来找到了RoboMongo，这名字听起来怪怪的，不过用起来才发现，真">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-20T09:40:28.119Z">
+<meta property="og:image" content="https://calabash519.github.io/my-picture/shell.png">
+<meta property="og:image" content="https://calabash519.github.io/my-picture/robo.png">
+<meta property="og:image" content="https://calabash519.github.io/my-picture/insert.png">
+<meta property="og:updated_time" content="2017-08-11T13:21:38.674Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="MongoDB可视化工具之RoboMongo">
+<meta name="twitter:description" content="每个前端的心里都少不了一个全栈的梦，最近在折腾node，所以少不了数据库的操作，由于以前对于数据库接触也比较少，所以开始学习MongoDB多少有点忐忑，不过开始了以后才发现，原来非关系型数据库大哥MongoDB也挺好学的啊，不过总是用MongoDB shell中总是觉得麻烦也不直观，所以想着找一个MongoDB的可视化工具用用，后来找到了RoboMongo，这名字听起来怪怪的，不过用起来才发现，真">
+<meta name="twitter:image" content="https://calabash519.github.io/my-picture/shell.png">
 
 
 
@@ -119,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/20/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/05/15/mongodb-and-robomango/"/>
 
 
 
 
 
-  <title>Hello World | Hexo</title>
+  <title>MongoDB可视化工具之RoboMongo | Hexo</title>
   
 
 
@@ -232,7 +236,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/20/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/15/mongodb-and-robomango/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -249,7 +253,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">MongoDB可视化工具之RoboMongo</h1>
         
 
         <div class="post-meta">
@@ -261,8 +265,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-20T17:40:28+08:00">
-                2018-09-20
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-15T09:55:36+08:00">
+                2017-05-15
               </time>
             
 
@@ -271,6 +275,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MongDB/" itemprop="url" rel="index">
+                    <span itemprop="name">MongDB</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -299,15 +325,23 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <p>每个前端的心里都少不了一个全栈的梦，最近在折腾node，所以少不了数据库的操作，由于以前对于数据库接触也比较少，所以开始学习MongoDB多少有点忐忑，不过开始了以后才发现，原来非关系型数据库大哥MongoDB也挺好学的啊，不过总是用MongoDB shell中总是觉得麻烦也不直观，所以想着找一个MongoDB的可视化工具用用，后来找到了RoboMongo，这名字听起来怪怪的，不过用起来才发现，真还挺好用。 <a id="more"></a></p>
+<p>MongoDB是一个开源的NoSQL数据库，相比MySQL那样的关系型数据库，它更显得轻巧、灵活，非常适合在数据规模很大、事务性不强的场合下使用。同时它也是一个对象数据库，没有表、行等概念，也没有固定的模式和结构，所有的数据以文档的形式存储(文档，就是一个关联数组式的对象，它的内部由属性组成，一个属性对应的值可能是一个数、字符串、日期、数组，甚至是一个嵌套的文档。)，数据格式就是JSON。</p>
+<p>想学MongoDB的话，基本的安装跟shell操作应该是不用多说，网上的文档教程太多，用点心总是能够弄好的。MongoDB的下载地址：<a href="https://www.mongodb.com" target="_blank" rel="noopener">摸我</a>，  RoboMongo的下载地址：<a href="https://robomongo.org" target="_blank" rel="noopener">摸我</a></p>
+<p>下载安装好了以后通过管理员身份打开控制台，启动MongoDB</p>
+<p><img src="https://calabash519.github.io/my-picture/shell.png" alt="shell"></p>
+<p>然后打开RoboMongo，连接上MongoDB，下面就可以开始愉快的右键创建数据库，集合和文档：</p>
+<p><img src="https://calabash519.github.io/my-picture/robo.png" alt="robo"></p>
+<p>集合类似于关系型数据库中的表，而文档类似于关系型数据库中的行，集合是无模式的，所以也就意味着集合可以由各种各样的文档组成（心疼管理员一秒），其实将文档整理分开在特定的集合中可以更好地索引，但是MongoDB就是没有强制要求（傲娇），这也说明了MongoDB的灵活性不是吗？</p>
+<p>通过命令行（卧槽，有可视化工具谁还用命令行，不过多用shell可以更熟练）或者是RoboMongo创建新的文档：</p>
+<p>手动创建了一个叫做test的数据库和一个叫做myblog的集合，然后插入文档（个人还是比较喜欢在RoboMongo操作，感觉简直不要太好用啊），如下图所示：</p>
+<p><img src="https://calabash519.github.io/my-picture/insert.png" alt="insert"></p>
+<p>可以看到的是，其实其代码高亮也是比较漂亮的（虽然界面做的比较丑），然后就是你可以在上面的小栏那里进行增删改查，完了F5就可以看到你想要的结果，具体MongoDB操作请看下面链接：</p>
+<p><a href="https://github.com/StevenSLXie/Tutorials-for-Web-Developers/blob/master/MongoDB%20%E6%9E%81%E7%AE%80%E5%AE%9E%E8%B7%B5%E5%85%A5%E9%97%A8.md" target="_blank" rel="noopener">MongDB 极简实践入门</a></p>
+<p><a href="http://wiki.jikexueyuan.com/project/mongodb/" target="_blank" rel="noopener">MongDB教程</a></p>
+<p><a href="https://book.douban.com/subject/6068947/" target="_blank" rel="noopener">MongDB权威指南1</a></p>
+<p><a href="https://book.douban.com/subject/25798102/" target="_blank" rel="noopener">MongDB权威指南2</a></p>
+<p>说到底你会用MongoDB shell的话就会用RoboMongo，个人觉得RoboMongo还更加的直观跟方便，MongDB以JSON的形式展示数据显然对于web开发者来说更加友好，配合node使用也是不错，最后，希望RoboMongo好好做下界面，求你们了。</p>
 
       
     </div>
@@ -332,8 +366,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/12/ajax/" rel="next" title="ajax 学习整理">
-                <i class="fa fa-chevron-left"></i> ajax 学习整理
+              <a href="/2017/04/25/unique-array/" rel="next" title="JavaScript数组去重">
+                <i class="fa fa-chevron-left"></i> JavaScript数组去重
               </a>
             
           </div>
@@ -341,6 +375,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/05/lalala/" rel="prev" title="四百里">
+                四百里 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -392,17 +430,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -453,22 +482,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

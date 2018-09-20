@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="不同于其他面向对象语言，ES6以前的JavaScript中中没有类的概念，主要是通过原型的方式来实现继承，JavaScript中引入了原型链，并且将原型链用来实现继承，其核心是利用原型使得一个对象继承另一个对象的方法和属性，JavaScript中原型继承的关键是将一个实例的原型对象指向另一个实例，因此前一个实例便可以获得后一个实例原型对象的属性和方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6学习总结（三）">
+<meta property="og:url" content="http://yoursite.com/2017/08/19/ES6-points-class/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="不同于其他面向对象语言，ES6以前的JavaScript中中没有类的概念，主要是通过原型的方式来实现继承，JavaScript中引入了原型链，并且将原型链用来实现继承，其核心是利用原型使得一个对象继承另一个对象的方法和属性，JavaScript中原型继承的关键是将一个实例的原型对象指向另一个实例，因此前一个实例便可以获得后一个实例原型对象的属性和方法">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2017-09-02T13:02:16.208Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6学习总结（三）">
+<meta name="twitter:description" content="不同于其他面向对象语言，ES6以前的JavaScript中中没有类的概念，主要是通过原型的方式来实现继承，JavaScript中引入了原型链，并且将原型链用来实现继承，其核心是利用原型使得一个对象继承另一个对象的方法和属性，JavaScript中原型继承的关键是将一个实例的原型对象指向另一个实例，因此前一个实例便可以获得后一个实例原型对象的属性和方法">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/08/19/ES6-points-class/"/>
+
+
+
+
+
+  <title>ES6学习总结（三） | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/19/ES6-points-class/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ES6学习总结（三）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-19T02:28:08+08:00">
+                2017-08-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ECMAscript6/" itemprop="url" rel="index">
+                    <span itemprop="name">ECMAscript6</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p> 不同于其他面向对象语言，ES6以前的JavaScript中中没有类的概念，主要是通过原型的方式来实现继承，JavaScript中引入了原型链，并且将原型链用来实现继承，其核心是利用原型使得一个对象继承另一个对象的方法和属性，JavaScript中原型继承的关键是将一个实例的原型对象指向另一个实例，因此前一个实例便可以获得后一个实例原型对象的属性和方法<a id="more"></a>，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Father</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.age=<span class="number">30</span>;</span><br><span class="line">&#125;</span><br><span class="line">Father.prototype.work=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">"hard work"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.age=<span class="number">10</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//将child的原型指向Father构造函数的实例</span></span><br><span class="line">Child.prototype=<span class="keyword">new</span> Father();</span><br><span class="line"></span><br><span class="line">Child.prototype.play=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">"play"</span>;				</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> child=<span class="keyword">new</span> Child();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(child.play()) <span class="comment">// play</span></span><br><span class="line"><span class="built_in">console</span>.log(child.work()) <span class="comment">// work</span></span><br></pre></td></tr></table></figure>
+<p>看完了上面的JavaScript典型的原型继承，要回到ES6上面了，ES6中引入了类的概念，class实际上是语法糖，很多都与构造函数,原型对象相关，先看个例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// var Man = class&#123;&#125; </span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Man</span></span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(age) &#123;</span><br><span class="line">    <span class="keyword">this</span>.age=age;</span><br><span class="line">  &#125;</span><br><span class="line">  grow()&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.age+<span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> cala=<span class="keyword">new</span> Man(<span class="number">22</span>);</span><br><span class="line"><span class="built_in">console</span>.log(cala.grow()); <span class="comment">// 23</span></span><br></pre></td></tr></table></figure>
+<p>上面是一个简单的ES6写class的例子，可以看到的是，用class关键字定义类，里面的constructor指的是构造函数，在构造函数中定义私有属性，然后接着定义了一个grow方法，最后通过new关键字来实例化一个对象</p>
+<p>在JavaScript中定义类和定义函数很相似，不过两者还是有些不同，函数声明可以提升，但是类声明则不行</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> cala=<span class="keyword">new</span> Man();</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Man</span></span>&#123;&#125; <span class="comment">// Man is not defined</span></span><br></pre></td></tr></table></figure>
+<p>ES6中的类使用 extends创建子类，每个类里面都会有一个constructor构造函数，实例化的时候必须用new关键字来调用类的构造函数，一个构造函数可以通过super来调用另一个构造函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Man</span></span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(age) &#123;</span><br><span class="line">    <span class="keyword">this</span>.age=age;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">static</span> work()&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"hard work"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cala</span> <span class="keyword">extends</span> <span class="title">Man</span></span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(age)&#123;</span><br><span class="line">    <span class="keyword">super</span>(age);</span><br><span class="line">  &#125;</span><br><span class="line">  grow()&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.age+<span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> cala=<span class="keyword">new</span> Cala(<span class="number">22</span>);</span><br><span class="line"><span class="built_in">console</span>.log(cala.grow()) <span class="comment">// 23</span></span><br></pre></td></tr></table></figure>
+<p>ES6中的class支持类支持在原型上定义访问器get，set属性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Man</span></span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(age) &#123;</span><br><span class="line">    <span class="keyword">this</span>.age=age;</span><br><span class="line">  &#125;</span><br><span class="line">  get getAge()&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.age;</span><br><span class="line">  &#125;</span><br><span class="line">  set setAge(age)&#123;</span><br><span class="line">    <span class="keyword">this</span>.age=age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> cala=<span class="keyword">new</span> Man(<span class="number">22</span>);</span><br><span class="line"><span class="built_in">console</span>.log(cala.getAge) <span class="comment">// 22</span></span><br><span class="line"></span><br><span class="line">cala.setAge=<span class="number">33</span>;</span><br><span class="line"><span class="built_in">console</span>.log(cala.getAge) <span class="comment">// 33</span></span><br></pre></td></tr></table></figure>
+<p>ES6的class中支持静态方法，用关键字static来定义，熟悉面向类与对象的童鞋大多知道，静态方法属于类本身，是通过类来调用，不能通过实例来调用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Man</span></span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(age) &#123;</span><br><span class="line">    <span class="keyword">this</span>.age=age;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">static</span> work()&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"hard work"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(Man.work()); <span class="comment">// hard work</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> cala=<span class="keyword">new</span> Man(<span class="number">22</span>);</span><br><span class="line"><span class="built_in">console</span>.log(cala.work()); <span class="comment">// cala.work is not a function</span></span><br></pre></td></tr></table></figure>
+<p>结合上面JavaScript典型的原型继承和下面的ES6的类，可以看出在使用new关键字实例化对象的时候，实际上是调用了prototype上的构造函数，ES6的class本质就是语法糖，对于传统的写法来说，也是可以在ES6中适用的，类上的方法其实也就相当于定义在prototype上面</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/16/ES6-points-function/" rel="next" title="ES6学习总结（二）">
+                <i class="fa fa-chevron-left"></i> ES6学习总结（二）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/23/ES6-points-module/" rel="prev" title="ES6学习总结（四）">
+                ES6学习总结（四） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

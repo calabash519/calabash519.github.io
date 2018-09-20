@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="与其说是对象合并，还不如说是JavaScript中对象属性的复制和转移，将多个对象中的属性合并到一个对象中 12345678var person = &amp;#123;	name : &apos;John&apos;,	age  : 24&amp;#125;,location = &amp;#123;	address : &apos;Location&apos;,	city : &apos;NewYork&apos;&amp;#125; ;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2018/09/20/hello-world/index.html">
+<meta property="og:title" content="ES6学习总结（五）">
+<meta property="og:url" content="http://yoursite.com/2017/08/28/obj-property-copy/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="与其说是对象合并，还不如说是JavaScript中对象属性的复制和转移，将多个对象中的属性合并到一个对象中 12345678var person = &amp;#123;	name : &apos;John&apos;,	age  : 24&amp;#125;,location = &amp;#123;	address : &apos;Location&apos;,	city : &apos;NewYork&apos;&amp;#125; ;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-20T09:40:28.119Z">
+<meta property="og:updated_time" content="2017-09-02T13:04:03.306Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="ES6学习总结（五）">
+<meta name="twitter:description" content="与其说是对象合并，还不如说是JavaScript中对象属性的复制和转移，将多个对象中的属性合并到一个对象中 12345678var person = &amp;#123;	name : &apos;John&apos;,	age  : 24&amp;#125;,location = &amp;#123;	address : &apos;Location&apos;,	city : &apos;NewYork&apos;&amp;#125; ;">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/20/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/08/28/obj-property-copy/"/>
 
 
 
 
 
-  <title>Hello World | Hexo</title>
+  <title>ES6学习总结（五） | Hexo</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/20/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/28/obj-property-copy/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">ES6学习总结（五）</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-20T17:40:28+08:00">
-                2018-09-20
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-28T19:04:43+08:00">
+                2017-08-28
               </time>
             
 
@@ -271,6 +271,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ECMAscript6/" itemprop="url" rel="index">
+                    <span itemprop="name">ECMAscript6</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -299,15 +321,13 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <p>与其说是对象合并，还不如说是JavaScript中对象属性的复制和转移，将多个对象中的属性合并到一个对象中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">	name : <span class="string">'John'</span>,</span><br><span class="line">	age  : <span class="number">24</span></span><br><span class="line">&#125;,</span><br><span class="line">location = &#123;</span><br><span class="line">	address : <span class="string">'Location'</span>,</span><br><span class="line">	city : <span class="string">'NewYork'</span></span><br><span class="line">&#125; ;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>如何可以做到将上述两个对象中的属性合并到同一个对象中，介绍ES6的一个新的方法，Object.assign，如下：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object.assign(target, ...sources) // target为目标对象，sources可以是多个源对象</span><br></pre></td></tr></table></figure>
+<p>这个方法可以帮助我们拷贝多个源对象中所有可以被枚举的自身属性到目标对象中，如果目标对象中的属性与源对象中的属性相同的话，源对象的属性会覆盖目标对象的属性，需要注意的是，这里面可以拷贝的属性必须是可以被枚举的自身属性，一个是可枚举，一个是自身，两个条件是必须的，这个方法作用的过程中，会先调用源对象的getter方法，然后调用目标对象的setter方法，从而达到拷贝属性到目标对象的目的</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.assign(person,location); </span><br><span class="line"><span class="comment">/* 现在我们应该可以看到，person对象中会有四个属性 </span></span><br><span class="line"><span class="comment">name , age , address, city */</span></span><br></pre></td></tr></table></figure>
+<p>在ES6里面我们使用Obj.assign，我们也可以用ES5来模拟Obj.assign，需要注意拷贝自身的可枚举属性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">assign</span>(<span class="params">target, source</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> target === <span class="string">'object'</span> &amp;&amp; <span class="keyword">typeof</span> source === <span class="string">'object'</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> source) &#123;</span><br><span class="line">      <span class="keyword">if</span> (fromObj.hasOwnProperty(key)) &#123;</span><br><span class="line">        target[key] = source[key];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  	<span class="keyword">throw</span> <span class="string">"Assign function can apply only on object"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -332,8 +352,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/12/ajax/" rel="next" title="ajax 学习整理">
-                <i class="fa fa-chevron-left"></i> ajax 学习整理
+              <a href="/2017/08/23/ES6-points-module/" rel="next" title="ES6学习总结（四）">
+                <i class="fa fa-chevron-left"></i> ES6学习总结（四）
               </a>
             
           </div>
@@ -341,6 +361,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/24/meet-vue/" rel="prev" title="Vue初探">
+                Vue初探 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -392,17 +416,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -453,22 +468,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

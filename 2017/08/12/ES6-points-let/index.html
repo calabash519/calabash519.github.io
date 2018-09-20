@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前端发展的太快了，快到ES6,ES7出来之后，今年已经是ES8了，但是纵然前端发展很快，我们除了马不停蹄的学习新的技术之外，也要沉下心来，好好的潜心磨砺自己，本文是整理了自己学习ES6之后相关的知识要点，寄希望于书之于笔，一来自己可以更好地领悟，而来也可以留作日后翻阅查看。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6学习总结（一）">
+<meta property="og:url" content="http://yoursite.com/2017/08/12/ES6-points-let/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前端发展的太快了，快到ES6,ES7出来之后，今年已经是ES8了，但是纵然前端发展很快，我们除了马不停蹄的学习新的技术之外，也要沉下心来，好好的潜心磨砺自己，本文是整理了自己学习ES6之后相关的知识要点，寄希望于书之于笔，一来自己可以更好地领悟，而来也可以留作日后翻阅查看。">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2017-09-02T13:02:39.711Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6学习总结（一）">
+<meta name="twitter:description" content="前端发展的太快了，快到ES6,ES7出来之后，今年已经是ES8了，但是纵然前端发展很快，我们除了马不停蹄的学习新的技术之外，也要沉下心来，好好的潜心磨砺自己，本文是整理了自己学习ES6之后相关的知识要点，寄希望于书之于笔，一来自己可以更好地领悟，而来也可以留作日后翻阅查看。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/08/12/ES6-points-let/"/>
+
+
+
+
+
+  <title>ES6学习总结（一） | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/12/ES6-points-let/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ES6学习总结（一）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-12T00:38:06+08:00">
+                2017-08-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ECMAscript6/" itemprop="url" rel="index">
+                    <span itemprop="name">ECMAscript6</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>前端发展的太快了，快到ES6,ES7出来之后，今年已经是ES8了，但是纵然前端发展很快，我们除了马不停蹄的学习新的技术之外，也要沉下心来，好好的潜心磨砺自己，本文是整理了自己学习ES6之后相关的知识要点，寄希望于书之于笔，一来自己可以更好地领悟，而来也可以留作日后翻阅查看。 <a id="more"></a></p>
+<p>ES6新增的知识点主要包括变量声明let以及const,新增类型symbol，模板字符串，语法糖实现类，用于异步调用的promise对象，模块化，箭头函数，rest参数以及参数默认值，Set和Map集合，for of循环和迭代器iterator以及Generator等等，可以看出，ES6较之于ES5还是有着很多的新增特性，接下来会分为几篇文章将其一一介绍。</p>
+<p><strong>let和const</strong></p>
+<p>在JavaScript中咱们以前主要用关键var来定义变量，ES6之后，新增了定义变量的两个关键字，分别是let和const</p>
+<p>对于变量来说，在ES5中var定义的变量会提升到作用域中所有的函数与语句前面，而ES6中let定义的变量则不会，let声明的变量会在其相应的代码块中建立一个暂时性死区，直至变量被声明。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//var声明变量</span></span><br><span class="line"><span class="built_in">console</span>.log(x === <span class="literal">undefined</span>); <span class="comment">// "true"</span></span><br><span class="line"><span class="keyword">var</span> x = <span class="number">3</span>;</span><br><span class="line"><span class="comment">//let声明变量</span></span><br><span class="line"><span class="built_in">console</span>.log(x === <span class="literal">undefined</span>); <span class="comment">// Uncaught ReferenceError: x is not defined</span></span><br><span class="line"><span class="keyword">let</span> x = <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+<p>从上面的代码可以看出来，使用let我们可以伪造一个代码块，终于不再局限于函数作用域中，而且对于代码也会更加的规范，使用let定义变量，提倡人们先定义再使用，不然会报错。</p>
+<p>const主要作用于定义常量，而且一旦声明，初始必须赋值，并且变量值不能更改，否则会报错</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> CALA;</span><br><span class="line"><span class="comment">//Missing initializer in const declaration</span></span><br><span class="line"><span class="keyword">const</span> CALA=<span class="string">"calabash519"</span></span><br><span class="line">CALA=<span class="string">"hello world"</span>;</span><br><span class="line"><span class="comment">//Assignment to constant variable.</span></span><br></pre></td></tr></table></figure>
+<p><strong>symbol</strong></p>
+<p>ES6    以前，我们知道5种基本数据类型分别是Undefined，Null，Boolean，Number以及String，然后加上一种引用类型Object构成了JavaScript中所有的数据类型，但是ES6出来之后，新增了一种数据类型，名叫symbol，像它的名字表露的一样，意味着独一无二，意思是每个 Symbol类型都是独一无二的，不与其它 Symbol 重复。</p>
+<p>可以通过调用 <code>Symbol()</code> 方法将创建一个新的 Symbol 类型的值，这个值独一无二，不与任何值相等。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mySymbol=<span class="built_in">Symbol</span>();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> mySymbol) <span class="comment">//"symbol"</span></span><br></pre></td></tr></table></figure>
+<p>其他类型可以被强制转换成字符串，但是Symbol 却不能，千万不要这么做，不然会报错，提示TypeError。</p>
+<p>可以使用Symbol来定义对象的属性，而且当Symbol作为属性名的时候，必须用[]来进行调用而不是点操作符。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> mySymbol = <span class="built_in">Symbol</span>();</span><br><span class="line">obj[mySymbol] = <span class="string">"calabash519"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(obj[mySymbol]); <span class="comment">//calabash519</span></span><br><span class="line"><span class="built_in">console</span>.log(obj.mySymbol); <span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
+<p>Symbol还可以使 instanceof 可扩展，在 ES6 中，<code>object instanceof constructor</code> 表达式被标准化为构造函数的一个方法：<code>constructor[Symbol.hasInstance](object)</code>，这意味着它是可扩展的。</p>
+<p><strong>模板字符串</strong></p>
+<p>字符串是JavaScript中基本类型之一，应该算是除了对象之外是使用最为频繁的类型吧，字符串中包含了例如substr，replace，indexOf,slice等等诸多方法，ES6引入了模板字符串的特性，用反引号来表示，可以表示多行字符串以及做到文本插值（利用模板占位符）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 以前的多行字符串我们这么写：</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"hello world 1\n\</span></span><br><span class="line"><span class="string">hello cala"</span>);</span><br><span class="line"><span class="comment">// "hello world</span></span><br><span class="line"><span class="comment">// hello cala"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//有了模板字符串之后</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`hello world</span></span><br><span class="line"><span class="string">string text line 2`</span>);</span><br><span class="line"><span class="comment">// "hello world</span></span><br><span class="line"><span class="comment">// hello cala"</span></span><br></pre></td></tr></table></figure>
+<p>可以用${}来表示模板占位符，可以将你已经定义好的变量传进括弧中，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name=<span class="string">"cala"</span>;</span><br><span class="line"><span class="keyword">var</span> age=<span class="number">22</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`hello,I'am <span class="subst">$&#123;name&#125;</span>,my age is <span class="subst">$&#123;age&#125;</span>`</span>)</span><br><span class="line"><span class="comment">//hello,I'am cala,my age is 22</span></span><br></pre></td></tr></table></figure>
+<p>上述是个很简单的例子，展示了模板字符串和模板占位符的基本用法，对比与普通字符串，模板字符串可以更好地支持自动转义特殊的字符串，也可以在其内嵌套控制语句，使得代码的逻辑更加清晰。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/26/object-extension/" rel="next" title="设置对象的不可拓展">
+                <i class="fa fa-chevron-left"></i> 设置对象的不可拓展
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/16/ES6-points-function/" rel="prev" title="ES6学习总结（二）">
+                ES6学习总结（二） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

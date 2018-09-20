@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="JavaScript中几种排序算法的实现">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2018/09/20/hello-world/index.html">
+<meta property="og:title" content="JavaScript排序算法">
+<meta property="og:url" content="http://yoursite.com/2017/06/15/javascript-sort/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="JavaScript中几种排序算法的实现">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-20T09:40:28.119Z">
+<meta property="og:updated_time" content="2017-08-11T13:21:11.101Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="JavaScript排序算法">
+<meta name="twitter:description" content="JavaScript中几种排序算法的实现">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/20/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/06/15/javascript-sort/"/>
 
 
 
 
 
-  <title>Hello World | Hexo</title>
+  <title>JavaScript排序算法 | Hexo</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/20/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/15/javascript-sort/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">JavaScript排序算法</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-20T17:40:28+08:00">
-                2018-09-20
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-15T09:55:36+08:00">
+                2017-06-15
               </time>
             
 
@@ -271,6 +271,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -299,15 +321,13 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <p>JavaScript中几种排序算法的实现<a id="more"></a></p>
+<p>插入排序</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">insertionSort</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i,len=arr.length;</span><br><span class="line">  <span class="keyword">for</span> (i=<span class="number">1</span>;i&lt;len;i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(i&gt;=<span class="number">1</span> &amp;&amp; arr[i<span class="number">-1</span>]&gt;arr[i])&#123;</span><br><span class="line">      arr[i]=arr[i<span class="number">-1</span>];</span><br><span class="line">      i--;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>选择排序</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">selectionSort</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i,</span><br><span class="line">      j,</span><br><span class="line">      minIndex,</span><br><span class="line">      len=arr.length;			</span><br><span class="line">  <span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;len<span class="number">-1</span>;i++) &#123;</span><br><span class="line">    minIndex=i;</span><br><span class="line">    <span class="keyword">for</span> (j=i+<span class="number">1</span>;j&lt;len;j++) &#123;</span><br><span class="line">      <span class="keyword">if</span>(arr[j]&lt;arr[minIndex])&#123;</span><br><span class="line">        minIndex=j;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> temp=arr[i]</span><br><span class="line">    arr[i]=arr[minIndex]</span><br><span class="line">    arr[minIndex]=temp;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>冒泡排序</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubbleSort</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i,</span><br><span class="line">      j,</span><br><span class="line">      len=arr.length;</span><br><span class="line">  <span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;len<span class="number">-1</span>;i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (j=<span class="number">0</span>;j&lt;len<span class="number">-1</span>-i;j++) &#123;</span><br><span class="line">      <span class="keyword">if</span>(arr[j]&gt;arr[j+<span class="number">1</span>])&#123;</span><br><span class="line">        <span class="keyword">var</span> temp=arr[j];</span><br><span class="line">        arr[j]=arr[j+<span class="number">1</span>];</span><br><span class="line">        arr[j+<span class="number">1</span>]=temp;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -332,8 +352,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/12/ajax/" rel="next" title="ajax 学习整理">
-                <i class="fa fa-chevron-left"></i> ajax 学习整理
+              <a href="/2017/06/05/lalala/" rel="next" title="四百里">
+                <i class="fa fa-chevron-left"></i> 四百里
               </a>
             
           </div>
@@ -341,6 +361,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/23/plan/" rel="prev" title="短期计划">
+                短期计划 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -392,17 +416,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -453,22 +468,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

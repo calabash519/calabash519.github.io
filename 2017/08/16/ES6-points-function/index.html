@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="关于ES6的学习总结，前两天写了第一篇，主要是关于变量声明关键字let和const，新增类型Symbol以及模板字符串，今天准备写第二篇，ES6里面的函数部分，ES6新增了箭头函数，Rest参数以及参数默认值。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6学习总结（二）">
+<meta property="og:url" content="http://yoursite.com/2017/08/16/ES6-points-function/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="关于ES6的学习总结，前两天写了第一篇，主要是关于变量声明关键字let和const，新增类型Symbol以及模板字符串，今天准备写第二篇，ES6里面的函数部分，ES6新增了箭头函数，Rest参数以及参数默认值。">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2017-09-02T13:02:24.888Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6学习总结（二）">
+<meta name="twitter:description" content="关于ES6的学习总结，前两天写了第一篇，主要是关于变量声明关键字let和const，新增类型Symbol以及模板字符串，今天准备写第二篇，ES6里面的函数部分，ES6新增了箭头函数，Rest参数以及参数默认值。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/08/16/ES6-points-function/"/>
+
+
+
+
+
+  <title>ES6学习总结（二） | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/16/ES6-points-function/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ES6学习总结（二）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-16T00:38:06+08:00">
+                2017-08-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ECMAscript6/" itemprop="url" rel="index">
+                    <span itemprop="name">ECMAscript6</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>关于ES6的学习总结，前两天写了第一篇，主要是关于变量声明关键字let和const，新增类型Symbol以及模板字符串，今天准备写第二篇，ES6里面的函数部分，ES6新增了箭头函数，Rest参数以及参数默认值。<a id="more"></a></p>
+<p><strong>箭头函数</strong></p>
+<p>关于箭头函数，之所以这么称呼，是因为它就是由一个箭头来定义的，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ES5</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">param</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> param*param;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//ES6 箭头函数</span></span><br><span class="line"><span class="keyword">var</span> foo= <span class="function"><span class="params">param</span> =&gt;</span> param*param;</span><br></pre></td></tr></table></figure>
+<p>上面的代码简单比较了ES5中普通函数与ES6箭头函数的的写法，很明显的可以看出，箭头函数显得更加的简便，箭头函数中，有一些需要注意的地方：</p>
+<p>返回值必须明确，并且在大括弧内必须加上return关键字，若是省略大括弧，则可以省略return</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回值的写法，下面两种是一样的</span></span><br><span class="line">() =&gt; <span class="string">"hello world"</span>;</span><br><span class="line">() =&gt; &#123; <span class="keyword">return</span> <span class="string">"hello word"</span>; &#125;</span><br></pre></td></tr></table></figure>
+<p>当参数的数目不止一个或者没有的时候，需要用小括弧（）包裹</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//没有参数或者多个参数需要加小括号 </span></span><br><span class="line"><span class="keyword">var</span> foo1 = <span class="function"><span class="params">()</span> =&gt;</span> <span class="string">"hello world"</span>;</span><br><span class="line"><span class="keyword">var</span> foo1 = <span class="function"><span class="params">()</span> =&gt;</span> &#123; <span class="keyword">return</span> <span class="string">"hello word"</span>; &#125;</span><br><span class="line"><span class="keyword">var</span> foo2 = <span class="function">(<span class="params">param1,param2</span>) =&gt;</span> param1*param2;</span><br></pre></td></tr></table></figure>
+<p>当返回的是一个对象的时候，需要注意大括弧外面加上（）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回对象需要函数体外面要加小括号</span></span><br><span class="line"><span class="keyword">var</span> foo3 = <span class="function"><span class="params">param</span> =&gt;</span> (&#123;<span class="attr">key</span>: value&#125;)</span><br></pre></td></tr></table></figure>
+<p>箭头函数中this的使用跟普通函数也不一样，在JavaScript的普通函数中，都会有一个自己的this值，主要分为：</p>
+<ol>
+<li>函数作为全局函数被调用时，this指向全局对象</li>
+<li>函数作为对象中的方法被调用时，this指向该对象</li>
+<li>函数作为构造函数的时候，this指向构造函数new出来的新对象</li>
+<li>还可以通过call，apply，bind改变this的指向</li>
+</ol>
+<p>在箭头函数中，this属于词法作用域，直接由上下文确定，对于普通函数中指向不定的this，箭头函数中处理this无疑更加简单，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ES5普通函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Man</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.age=<span class="number">22</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.age+<span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> cala=<span class="keyword">new</span> Man();</span><br><span class="line"><span class="built_in">console</span>.log(cala())<span class="comment">//undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//ES6箭头函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Man</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.age=<span class="number">22</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">this</span>.age+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> cala=<span class="keyword">new</span> Man();</span><br><span class="line"><span class="built_in">console</span>.log(cala())<span class="comment">//23</span></span><br></pre></td></tr></table></figure>
+<p>箭头函数中没有arguments(我们可以用rest参数替代),也没有原型，也不能使用new 关键字，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//没有arguments</span></span><br><span class="line"><span class="keyword">var</span> foo=<span class="function">(<span class="params">a,b</span>)=&gt;</span>&#123;<span class="keyword">return</span> <span class="built_in">arguments</span>[<span class="number">0</span>]*<span class="built_in">arguments</span>[<span class="number">1</span>]&#125;</span><br><span class="line"><span class="built_in">console</span>.log(foo(<span class="number">3</span>,<span class="number">5</span>))</span><br><span class="line"><span class="comment">//arguments is not defined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//没有原型</span></span><br><span class="line"><span class="keyword">var</span> Obj = <span class="function"><span class="params">()</span> =&gt;</span> &#123;&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(Obj.prototype); </span><br><span class="line"><span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//不能使用new 关键字</span></span><br><span class="line"><span class="keyword">var</span> Obj = <span class="function"><span class="params">()</span> =&gt;</span> &#123;<span class="string">"hello world"</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> o = <span class="keyword">new</span> Obj(); </span><br><span class="line"><span class="comment">// TypeError: Obj is not a constructor</span></span><br></pre></td></tr></table></figure>
+<p><strong>Rest参数</strong></p>
+<p>Rest参数名为剩余参数，以…为前缀，上面讲过，ES6的箭头函数中不能使用arguments，我们可以用rest参数来替代，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">arguments</span>.length;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(foo(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)) <span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> foo= <span class="function">(<span class="params">...rest</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> rest.length;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(foo(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)) <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+<p>在rest参数前面若是有其他的形式参数，那么rest参数只能放在最后面：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="function">(<span class="params">param1,param2,...rest</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> param1 + param2 + rest.length;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(foo(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>)) <span class="comment">// 6</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> foo = <span class="function">(<span class="params">param1,...rest,param2</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> param1 + param2 + rest.length;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(foo(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>)) <span class="comment">//  Rest parameter must be last formal parameter</span></span><br></pre></td></tr></table></figure>
+<p><strong>默认参数值</strong></p>
+<p>在ES6以前，函数调用时，那些没有传递的参数，JavaScript默认为undefined，ES6中新增了参数默认值，允许使用默认值来初始化形参</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="function">(<span class="params">param1,param2=<span class="number">10</span></span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> param1*param2;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(foo(<span class="number">10</span>)) <span class="comment">// 100</span></span><br></pre></td></tr></table></figure>
+<p>上面这个例子可以看到，定义了一个参数相乘的简单函数，在调用函数的时候，只传入了第一个参数的值，结果返回100，是因为在函数中第二个参数默认值为10，若我们在调用函数的时候没有显式的指明参数值，则会默认使用参数默认值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="function">(<span class="params">param1,param2=<span class="number">10</span></span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> param1*param2;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(foo(<span class="number">10</span>，<span class="number">20</span>)) <span class="comment">// 200</span></span><br></pre></td></tr></table></figure>
+<p>这次我们在调用函数大的时候，两个参数全部传递了值，因此返回200。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/12/ES6-points-let/" rel="next" title="ES6学习总结（一）">
+                <i class="fa fa-chevron-left"></i> ES6学习总结（一）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/19/ES6-points-class/" rel="prev" title="ES6学习总结（三）">
+                ES6学习总结（三） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

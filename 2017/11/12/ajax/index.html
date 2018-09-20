@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="AJAX（Asynchronous Javascript And XML）如名字所示，ajax的含义是异步的JavaScript和XML，ajax不是新的编程语言，而是指与服务器交互数据从而对页面进行局部更新的web技术，xml是一种数据格式，相比于JSON，对数据的描述性更好">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ajax 学习整理">
+<meta property="og:url" content="http://yoursite.com/2017/11/12/ajax/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="AJAX（Asynchronous Javascript And XML）如名字所示，ajax的含义是异步的JavaScript和XML，ajax不是新的编程语言，而是指与服务器交互数据从而对页面进行局部更新的web技术，xml是一种数据格式，相比于JSON，对数据的描述性更好">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2017-11-12T13:00:26.662Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ajax 学习整理">
+<meta name="twitter:description" content="AJAX（Asynchronous Javascript And XML）如名字所示，ajax的含义是异步的JavaScript和XML，ajax不是新的编程语言，而是指与服务器交互数据从而对页面进行局部更新的web技术，xml是一种数据格式，相比于JSON，对数据的描述性更好">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/12/ajax/"/>
+
+
+
+
+
+  <title>ajax 学习整理 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/12/ajax/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ajax 学习整理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-12T20:52:55+08:00">
+                2017-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="AJAX（Asynchronous-Javascript-And-XML）"><a href="#AJAX（Asynchronous-Javascript-And-XML）" class="headerlink" title="AJAX（Asynchronous Javascript And XML）"></a>AJAX（Asynchronous Javascript And XML）</h2><p>如名字所示，ajax的含义是异步的JavaScript和XML，ajax不是新的编程语言，而是指与服务器交互数据从而对页面进行局部更新的web技术，xml是一种数据格式，相比于JSON，对数据的描述性更好<a id="more"></a></p>
+<p><strong>使用ajax </strong> </p>
+<p>1.原生JavaScript</p>
+<p>要使用ajax，XMLHttpRequest 对象必不可少，XMLHttpRequest 作为ajax的基础，支持所有的现代浏览器（IE5,IE6不算）</p>
+<p>创建XMLHttpRequest 对象，兼容IE5,IE6</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> request;</span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;</span><br><span class="line">    request = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    request = <span class="keyword">new</span> ActiveXObject(<span class="string">'Microsoft.XMLHTTP'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>ajax请求数据</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 点击ID为send的元素，发送ajax请求</span></span><br><span class="line">$(<span class="string">'#send'</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 请求的5个阶段，对应readyState的值</span></span><br><span class="line">    <span class="comment">// 0: 未初始化，send方法未调用；</span></span><br><span class="line">    <span class="comment">// 1: 正在发送请求，send方法已调用；</span></span><br><span class="line">    <span class="comment">// 2: 请求发送完毕，send方法执行完毕；</span></span><br><span class="line">    <span class="comment">// 3: 正在解析响应内容；</span></span><br><span class="line">    <span class="comment">// 4: 响应内容解析完毕；</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> data = <span class="string">'name=yang'</span>;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">//创建一个ajax对象</span></span><br><span class="line">    <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">  </span><br><span class="line">    <span class="comment">//对ajax对象进行监听</span></span><br><span class="line">    xhr.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (xhr.readyState == <span class="number">4</span>) &#123; <span class="comment">//4表示解析完毕</span></span><br><span class="line">            <span class="keyword">if</span> (xhr.status == <span class="number">200</span>) &#123; <span class="comment">//200为正常返回</span></span><br><span class="line">                <span class="built_in">console</span>.log(xhr)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">//建立连接，参数一：发送方式，二：请求地址，三：是否异步，true为异步</span></span><br><span class="line">    xhr.open(<span class="string">'POST'</span>, <span class="string">'url'</span>, <span class="literal">true</span>);</span><br><span class="line">  	<span class="comment">// 发送方式为GET，且避免缓存</span></span><br><span class="line">  	<span class="comment">// xhr.open('GET', 'url'++ Math.random(), true);</span></span><br><span class="line">  </span><br><span class="line">    xhr.send(data);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>2.jQuery</p>
+<p>在jQuery中使用ajax会简单很多，既处理了浏览器兼容问题，而且也对JS代码进行封装，没有原生JS那么臃肿，jQuery中的ajax方法常用的有<code></code>$.load<code>,</code>$.post<code>，</code> $.get<code>以及</code> $.ajax`</p>
+<p>$.load(从服务器加载数据，并把返回的数据放入被选元素中)</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"p"</span>).load(URL,data,callback);</span><br></pre></td></tr></table></figure>
+<p>$.get(通过GET 请求从服务器上请求数据)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$.get(URL,callback);</span><br></pre></td></tr></table></figure>
+<p>$.post() (通过 POST 请求从服务器上请求数据)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$.post(URL,data,callback);</span><br></pre></td></tr></table></figure>
+<p>$.ajax(get，post请求皆可，比较通用)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    url: <span class="string">""</span>,</span><br><span class="line">    <span class="comment">// 请求方式（jQuery 1.9.0以前使用 method ）</span></span><br><span class="line">    type: <span class="string">"POST"</span>,</span><br><span class="line">    <span class="comment">// 是否异步</span></span><br><span class="line">    <span class="keyword">async</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">// 是否清理浏览器缓存（get请求加时间戳也可）</span></span><br><span class="line">    cache： <span class="literal">false</span>,</span><br><span class="line">    <span class="comment">// 设置超时时间</span></span><br><span class="line">    timeout: <span class="number">5000</span>,</span><br><span class="line">    <span class="comment">// post请求的发送到服务器的数据</span></span><br><span class="line">    data: &#123;&#125;,</span><br><span class="line">    <span class="comment">// 返回的数据格式,可选项：json/xml/html/script/jsonp/text</span></span><br><span class="line">    dataType: <span class="string">'json'</span>,</span><br><span class="line">    <span class="comment">// 将数据发送到服务器时，使用的内容类型</span></span><br><span class="line">    contentType: <span class="string">'application/x-www-form-urlencoded;charset=UTF-8'</span>,</span><br><span class="line">    <span class="comment">// 同域请求为false， 跨域请求为true</span></span><br><span class="line">    crossDomain: <span class="literal">false</span>,</span><br><span class="line">    <span class="comment">// 发送请求前的回调</span></span><br><span class="line">    beforeSend: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line">    <span class="comment">// 请求成功的回调</span></span><br><span class="line">    success: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;&#125;,</span><br><span class="line">    <span class="comment">// 请求失败的回调</span></span><br><span class="line">    error: <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;&#125;,</span><br><span class="line">    <span class="comment">// 请求完成之后的回调（success 和 error之后均调用）</span></span><br><span class="line">    complete: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>参考： </p>
+<ol>
+<li><a href="http://www.css88.com/jqapi-1.9/jQuery.ajax/" target="_blank" rel="noopener">jQuery中文文档</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/AJAX" target="_blank" rel="noopener">MDN ajax</a></li>
+<li><a href="https://book.douban.com/subject/10546125/" target="_blank" rel="noopener">JavaScript高级程序设计 21章</a></li>
+</ol>
+<p><strong>11-07 更新</strong> </p>
+<p>关于$.ajax参数：</p>
+<p><strong>complete</strong> </p>
+<blockquote>
+<p>请求完成后回调函数，请求<code>success</code> 和 <code>error</code>之后均调用,<strong>jQuery 1.5开始，</strong> <code>complete</code>设置可以接受一个函数的数组。每个函数将被依次调用</p>
+</blockquote>
+<p><strong>contentType</strong></p>
+<blockquote>
+<p>默认值是”application/x-www-form-urlencoded; charset=UTF-8”，<strong>jQuery 1.6 </strong>开始，可以传递<code>false</code>，表明没有设置任何内容类型头信息</p>
+</blockquote>
+<p><strong>data</strong> （之前一直以为只有POST才会用data。。。）</p>
+<blockquote>
+<p>发送到服务器的数据。它被转换成一个查询字符串,如果已经是一个字符串的话就不会转换。查询字符串将被追加到GET请求的URL后面</p>
+</blockquote>
+<p><strong>error</strong></p>
+<blockquote>
+<p><strong>jQuery 1.5开始</strong>, 在<code>error</code>设置可以接受函数组成的数组。每个函数将被依次调用</p>
+</blockquote>
+<p><strong>method</strong></p>
+<blockquote>
+<p>HTTP 请求方法，jQuery 1.9.0 之前的版本，需要使用<code>type</code>选项</p>
+</blockquote>
+<p><strong>success</strong></p>
+<blockquote>
+<p><strong>jQuery 1.5</strong> 成功设置可以接受一个函数数组。每个函数将被依次调用</p>
+</blockquote>
+<p><strong>done</strong></p>
+<blockquote>
+<p>一个可供选择的 success 回调选项的构造函数，从jQuery 3.0后success被其取代</p>
+</blockquote>
+<p><strong>fail</strong></p>
+<blockquote>
+<p>一种可供选择的 error 回调选项的构造函数，jQuery 3.0后<code>.fail()</code>方法取代了的过时的<code>.error()</code>方法</p>
+</blockquote>
+<p><strong>always</strong></p>
+<blockquote>
+<p>一种可供选择的 complete 回调选项的构造函数，jQuery 3.0后<code>.always()</code>方法取代了的过时的<code>.complete()</code>方法</p>
+</blockquote>
+<p><strong>then</strong></p>
+<blockquote>
+<p>包含了 <code>.done()</code> 和 <code>.fail()</code>方法的功能，可参考Promise规范（resolve，reject，then）</p>
+</blockquote>
+<p>注意：<code>jqXHR.success()</code>, <code>jqXHR.error()</code>, 和 <code>jqXHR.complete()</code>回调<del>从 jQuery 1.8开始 被弃用过时。他们将最终被取消，您的代码应做好准备，</del> 从jQuery 3.0开始被删除，你可以使用<code>jqXHR.done()</code>, <code>jqXHR.fail()</code>, 和 <code>jqXHR.always()</code> 代替。</p>
+<p>jQuery执行之后回调在向promise规范靠拢，promise规范可以参考下列：</p>
+<ol>
+<li><a href="https://www.w3cplus.com/javascript/promise.html" target="_blank" rel="noopener">细嗅Promise</a></li>
+<li><a href="Promises/A+规范">Promises/A+规范</a></li>
+<li><a href="http://liubin.org/promises-book/" target="_blank" rel="noopener">JavaScript Promise迷你书</a></li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/11/learn-git/" rel="next" title="Git命令行纪要">
+                <i class="fa fa-chevron-left"></i> Git命令行纪要
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/20/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#AJAX（Asynchronous-Javascript-And-XML）"><span class="nav-number">1.</span> <span class="nav-text">AJAX（Asynchronous Javascript And XML）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

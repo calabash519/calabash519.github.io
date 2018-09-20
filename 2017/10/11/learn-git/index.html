@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="windows配置用户名和密码 git config --global user.name &amp;quot;Your Name&amp;quot;git config --global user.email &amp;quot;email@example.com&amp;quot; windows创建ssh秘钥 ssh-keygen -t rsa -C &amp;quot;email@example.com&amp;quot;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git命令行纪要">
+<meta property="og:url" content="http://yoursite.com/2017/10/11/learn-git/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="windows配置用户名和密码 git config --global user.name &amp;quot;Your Name&amp;quot;git config --global user.email &amp;quot;email@example.com&amp;quot; windows创建ssh秘钥 ssh-keygen -t rsa -C &amp;quot;email@example.com&amp;quot;">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://calabash519.github.io/my-picture/stage.jpg">
+<meta property="og:updated_time" content="2017-10-12T15:35:08.901Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git命令行纪要">
+<meta name="twitter:description" content="windows配置用户名和密码 git config --global user.name &amp;quot;Your Name&amp;quot;git config --global user.email &amp;quot;email@example.com&amp;quot; windows创建ssh秘钥 ssh-keygen -t rsa -C &amp;quot;email@example.com&amp;quot;">
+<meta name="twitter:image" content="https://calabash519.github.io/my-picture/stage.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/10/11/learn-git/"/>
+
+
+
+
+
+  <title>Git命令行纪要 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/11/learn-git/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Git命令行纪要</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-11T22:13:54+08:00">
+                2017-10-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Git/" itemprop="url" rel="index">
+                    <span itemprop="name">Git</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>windows配置用户名和密码</p>
+<p><code>git config --global user.name &quot;Your Name&quot;</code><br><code>git config --global user.email &quot;email@example.com&quot;</code></p>
+<p>windows创建ssh秘钥 <code>ssh-keygen -t rsa -C &quot;email@example.com&quot;</code> <a id="more"></a></p>
+<h4 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h4><p>初始化repo   <code>git init</code></p>
+<p>查看工作区文件状态  <code>git status</code></p>
+<p>将文件添加到暂存区  <code>git add your file</code></p>
+<p><img src="https://calabash519.github.io/my-picture/stage.jpg" alt="stage"></p>
+<h5 id="暂存区的意义-分批、分阶段递交，进行快照，便于回退"><a href="#暂存区的意义-分批、分阶段递交，进行快照，便于回退" class="headerlink" title="暂存区的意义 : 分批、分阶段递交，进行快照，便于回退"></a>暂存区的意义 : 分批、分阶段递交，进行快照，便于回退</h5><p>将文件从暂存区提交到分支  <code>git commit -m &quot;your tips&quot;</code></p>
+<p>查看已提交的历史记录  <code>git log</code></p>
+<p>简化历史记录 <code>git log --pretty=oneline</code></p>
+<p>回退到上一个版本 <code>git reset --hard HEAD^</code> </p>
+<p>HEAD指向的是现在使用中的分支的最后一次更新</p>
+<p>回退到任意版本  <code>git reset --hard  version commit id(可截取前六个)</code></p>
+<p>找回版本commit id  <code>git reflog</code></p>
+<p>工作区或暂存区回退到最近更改 <code>git checkout -- your file</code></p>
+<p>删除工作区的文件 <code>git rm your file</code> </p>
+<p>删除版本库里的文件 <code>git rm your file + git commit -m &quot;delete file&quot;</code></p>
+<p>本地关联远程库 <code>git remote add origin your repo url</code></p>
+<p>本地推送到远程库 <code>git push origin master</code> </p>
+<p>首次推送添加-u 将本地的<code>master</code>分支和远程的<code>master</code>分支关联起来</p>
+<p> 从远程库克隆 <code>git clone your repo url</code></p>
+<p>显示远程库 <code>git remote</code></p>
+<p>本地拉取远程库的代码 <code>git pull origin master</code></p>
+<p>查看远程库的修改 <code>git fetch origin master</code></p>
+<p><strong>pull = fetch + merge</strong> </p>
+<h4 id="分支部分"><a href="#分支部分" class="headerlink" title="分支部分"></a>分支部分</h4><p>分支区分为<strong>Merge分支</strong> 和 <strong>Topic分支</strong> </p>
+<ol>
+<li>Merge分支是为了可以随时发布release而创建的分支，可作为Topic分支的源分支使用</li>
+<li>Topic分支是为了开发新功能或修复Bug等任务而建立的分支</li>
+<li>Topic分支是从稳定的Merge分支创建的。完成作业后，要把Topic分支合并回Merge分支</li>
+</ol>
+<p>创建分支 <code>git branch branch name</code></p>
+<p>切换分支 <code>git checkout branch name</code></p>
+<p>创建分支和切换分支简洁写法 <code>git checkout -b branch name</code></p>
+<p>查看当前分支  <code>git branch</code></p>
+<p>删除分支 <code>git branch -d branch name</code></p>
+<h4 id="分支合并以及冲突处理"><a href="#分支合并以及冲突处理" class="headerlink" title="分支合并以及冲突处理"></a>分支合并以及冲突处理</h4><p>分支合并分为<strong>merge</strong> 或<strong>rebase</strong></p>
+<ol>
+<li>使用merge可以合并多个历史记录的流程，会保持修改内容的历史记录，但是历史记录会很复杂</li>
+<li>历史记录简单，是在原有提交的基础上将差异内容反映进去。<br>因此，可能导致原本的提交内容无法正常运行。</li>
+</ol>
+<p>合并merge分支 </p>
+<ol>
+<li>主分支合并子分支 <code>git merge branch name</code> </li>
+</ol>
+<p>若是多个分支并行操作用merge方式合并的话需要手动更改冲突部分</p>
+<p>分支rebase合并 </p>
+<ol>
+<li>子分支请求rebase主分支<code>git rebase master</code></li>
+<li>若是多个分支并行，修改冲突</li>
+<li>添加子分支的更改文件到暂存区 <code>git add your file</code></li>
+<li>提交更改不能用commit提交 <code>git rebase --continue</code></li>
+<li>切换到主分支 <code>git checkout master</code></li>
+<li>合并子分支 <code>git merge branch name</code></li>
+</ol>
+<h4 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h4><p>Git可以使用2种标签</p>
+<ol>
+<li><strong>轻标签</strong> ，为了在本地暂时使用或一次性使用。</li>
+<li><strong>注解标签</strong> ，发布标签是采用注解标签来添加注解或签名的</li>
+</ol>
+<p>添加轻标签 <code>git tag tag name</code></p>
+<p>显示标签列表 <code>git tag</code></p>
+<p>添加注解标签以及添加注解 <code>git tag -am &quot;your tips&quot; tag name</code></p>
+<p>显示标签列表和标签注解 <code>git tag -n</code></p>
+<p>删除标签 <code>git tag -d tagname</code></p>
+<h4 id="提交操作"><a href="#提交操作" class="headerlink" title="提交操作"></a>提交操作</h4><p>以下对于提交操作的修改在添加命令后都会在命令行编辑工具中进行编辑才会生效</p>
+<ol>
+<li>修改最近一次的提交备注 <code>git commit --amend</code></li>
+<li>取消最近一次的提交 <code>git revert HEAD</code></li>
+<li>舍弃最近的提交   <code>git reset --hard HEAD~</code> 等同于上面的版本回退</li>
+<li>对于上面<code>git reset</code> 操作的还原 <code>git reset --hard ORIG_HEAD</code></li>
+<li>提取其他分支的提到自己的分支上<code>git cherry-pick commit id</code>,commit id 指的是想要提取的其他分支那个版本的id</li>
+<li>汇合过去两次的提交为一次 <code>git rebase -i HEAD~~</code> 需要在命令行下面的编辑工具中将第二行的“pick”改成“<strong>squash</strong>”，然后保存并退出</li>
+<li>修改提交备注 <code>git rebase -i HEAD~~</code> ,需要在命令行下面的编辑工具中将第二行的“pick”改成“<strong>edit</strong>”，然后保存并退出,然后<code>git add</code> 添加到暂存区，用<code>commit --amend</code>保存修改,最后合并<code>git rebase --continue</code></li>
+<li>子分支的所有提交一起合并到主分支 <code>git merge --squash branch name</code></li>
+</ol>
+<p><strong>squash</strong> 是merge的特殊选项：用这个选项指定分支的合并，就可以把所有汇合的提交添加到分支上。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/24/meet-vue/" rel="next" title="Vue初探">
+                <i class="fa fa-chevron-left"></i> Vue初探
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/12/ajax/" rel="prev" title="ajax 学习整理">
+                ajax 学习整理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本操作"><span class="nav-number">1.</span> <span class="nav-text">基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#暂存区的意义-分批、分阶段递交，进行快照，便于回退"><span class="nav-number">1.1.</span> <span class="nav-text">暂存区的意义 : 分批、分阶段递交，进行快照，便于回退</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支部分"><span class="nav-number">2.</span> <span class="nav-text">分支部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支合并以及冲突处理"><span class="nav-number">3.</span> <span class="nav-text">分支合并以及冲突处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标签"><span class="nav-number">4.</span> <span class="nav-text">标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提交操作"><span class="nav-number">5.</span> <span class="nav-text">提交操作</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
